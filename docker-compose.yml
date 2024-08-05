@@ -1,0 +1,9 @@
+# Docker composer is here to simplify building and rerunning docker. It does port forwarding as well
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - "8000:5000"
+    volumes:
+      - .:/app

@@ -1,0 +1,11 @@
+# DEV ENVIRONMENT CONFIG
+common:
+  version: 1.0.0
+  environment: DEBUG
+
+db_parameters:
+  host: 'reporting-good-hluboka.cws71yli5wvp.eu-central-1.rds.amazonaws.com'
+  username: 'python_access'
+  password: 'GoodReporting12!'
+  dbInstanceIdentifier: 'areal_hluboka'
+  port: 3306
