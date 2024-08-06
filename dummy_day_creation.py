@@ -9,9 +9,9 @@ FORMAT = '%(asctime)s: %(message)s'
 logging.getLogger('boto').setLevel(logging.CRITICAL)
 
 # Create a directory for logging
-logging.basicConfig(format=FORMAT, level=logging.DEBUG,
-                    filename=f'daily_dummy_ingest/logging/DUMMY_LOAD: '
-                             f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.log')
+logging.basicConfig(format=FORMAT, level=logging.DEBUG)
+                    # filename=f'daily_dummy_ingest/logging/DUMMY_LOAD: '
+                    #          f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.log')
 warnings.filterwarnings("ignore")
 
 startTime = datetime.datetime.now()
