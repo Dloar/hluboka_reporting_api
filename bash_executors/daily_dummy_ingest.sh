@@ -7,4 +7,4 @@ cd /home/ubuntu/hluboka_reporting_api || exit
 source /home/ubuntu/areal_repo_api/venv/bin/activate
 
 # Execute the Python script
-python /home/ubuntu/hluboka_reporting_api/dummy_day_creation.py
+python /home/ubuntu/hluboka_reporting_api/bash_executors/dummy_day_creation.py
