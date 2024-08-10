@@ -7,5 +7,5 @@ class GetWeatherDayRawDataQuery:
     def query_weather_day_raw_data():
         day_raw_data = f''' 
                         select * 
-                        from temperature_daily_raw;'''
+                        from sup_temperature_raw;'''
         return day_raw_data
