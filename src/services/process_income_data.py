@@ -1,6 +1,7 @@
 import uuid
 
 from src.handlers.define_income_dictionary_handler import DefineIncomeDictionaryHandler
+from src.handlers.get_api_weather_report_handler import GetApiWeatherReportHandler
 from src.handlers.get_daily_total_income_handler import GetDailyTotalIncomeHandler
 from src.handlers.get_income_data_handler import GetIncomeDataHandler
 from src.queries.data_update.update_income_detail_handler import UpdateIncomeDetailHandler
@@ -27,6 +28,7 @@ def process_income_data(income_data,
     # Update the income by attraction
     UpdateIncomeDetailHandler(structured_income_df)
     source_data = GetDailyTotalIncomeHandler(source_data=source_data, income_data=income_data)
+    api_weather_df = GetApiWeatherReportHandler(processing_date=source_data.processing_date)
 
-    UpdateResultsToDb(source_data=source_data)
+    UpdateResultsToDb(source_data=source_data, api_weather_df=api_weather_df)
     UpdateReceivedDataStatusHandler(income_data=income_data, status=1, calculation_id=calculation_id)
