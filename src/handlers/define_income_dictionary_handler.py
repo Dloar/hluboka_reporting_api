@@ -10,14 +10,19 @@ class DefineIncomeDictionaryHandler:
         self.income_data = income_data
         self.calendar_detail_df = source_data.calendar_detail_df
         self.income_dict = self.current_income_data()
+        self.attraction_data_df = source_data.attraction_data_df
+
     def current_income_data(self):
         results_dict = {}
         try:
-            for key in list(range(1, 10)):
-                if str(key) in list(self.income_data['daily_income'].keys()):
-                    results_dict[key] = self.income_data['daily_income'][str(key)]
+            for attraction_name in list(self.attraction_data_df['attraction_name']):
+                attraction_key = int(
+                    self.attraction_data_df.loc[self.attraction_data_df['attraction_name'] == attraction_name][
+                        'pk_attraction_dictionary_id'])
+                if attraction_name in list(self.income_data.keys()):
+                    results_dict[attraction_key] = self.income_data[attraction_name]
                 else:
-                    results_dict[key] = 0
+                    results_dict[attraction_key] = 0
         except Exception as e:
             logging.info(f'Income data failed to finished with error {e}')
 

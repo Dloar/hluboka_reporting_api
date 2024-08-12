@@ -37,8 +37,8 @@ class DefineTemperatureDictionaryHandler:
     def temperature_handler(self):
         "Get current temperature or define artificial"
         try:
-            if 'temperature' in list(self.temperature_data['weather_data'].keys()):
-                temperature_value = self.temperature_data['weather_data']['temperature']
+            if 'temperature' in list(self.temperature_data.keys()):
+                temperature_value = self.temperature_data['temperature']
             else:
                 temperature_value = np.nan
         except Exception as e:
@@ -50,8 +50,8 @@ class DefineTemperatureDictionaryHandler:
     def humidity_handler(self):
         "Get current humidity or define artificial"
         try:
-            if 'humidity' in list(self.temperature_data['weather_data'].keys()):
-                humidity_value = self.temperature_data['weather_data']['humidity']
+            if 'humidity' in list(self.temperature_data.keys()):
+                humidity_value = self.temperature_data['humidity']
             else:
                 humidity_value = np.nan
         except Exception as e:
@@ -63,8 +63,8 @@ class DefineTemperatureDictionaryHandler:
     def wind_speed_handler(self):
         "Get current wind speed or define artificial"
         try:
-            if 'wind_speed' in list(self.temperature_data['weather_data'].keys()):
-                wind_speed_value = self.temperature_data['weather_data']['wind_speed']
+            if 'wind_speed' in list(self.temperature_data.keys()):
+                wind_speed_value = self.temperature_data['wind_speed']
             else:
                 wind_speed_value = np.nan
         except Exception as e:
@@ -76,8 +76,8 @@ class DefineTemperatureDictionaryHandler:
     def rain_intensity_handler(self):
         "Get current rain intensity or define artificial"
         try:
-            if 'rain_intensity' in list(self.temperature_data['weather_data'].keys()):
-                rain_intensity_value = self.temperature_data['weather_data']['rain_intensity']
+            if 'rain_intensity' in list(self.temperature_data.keys()):
+                rain_intensity_value = self.temperature_data['rain_intensity']
             else:
                 rain_intensity_value = np.nan
         except Exception as e:
@@ -89,8 +89,8 @@ class DefineTemperatureDictionaryHandler:
     def rain_accumulation_handler(self):
         "Get current rain accumulation or define artificial"
         try:
-            if 'rain_accumulation' in list(self.temperature_data['weather_data'].keys()):
-                rain_accumulation_value = self.temperature_data['weather_data']['rain_accumulation']
+            if 'rain_accumulation' in list(self.temperature_data.keys()):
+                rain_accumulation_value = self.temperature_data['rain_accumulation']
             else:
                 rain_accumulation_value = np.nan
         except Exception as e:

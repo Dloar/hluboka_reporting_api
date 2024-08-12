@@ -62,4 +62,5 @@ class GetApiWeatherReportHandler:
             forecast_data_df['sunriseTime'])
         # Convert to hours
         forecast_data_df['time_of_sun'] = forecast_data_df['time_of_sun'].astype(int)/(1000000000*3600)
+
         return forecast_data_df

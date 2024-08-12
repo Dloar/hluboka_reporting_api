@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields
 
+
 class WeatherSchema(Schema):
     action_datetime = fields.DateTime(required=True)
     temperature = fields.Integer(allow_none=True)
@@ -11,5 +12,12 @@ class WeatherSchema(Schema):
 
 class IncomeSchema(Schema):
     action_date = fields.Date(required=True)
-    attraction_name = fields.Str(required=True)
-    attraction_income = fields.Integer(required=True)
+    restaurace = fields.Integer(required=True)
+    kavarna = fields.Integer(required=True)
+    lanovy_park = fields.Integer(required=True)
+    minigolf = fields.Integer(required=True)
+    trampoliny = fields.Integer(required=True)
+    pujcovna = fields.Integer(required=True)
+    koktejl_bar = fields.Integer(required=True)
+    spunt_vstup = fields.Integer(required=True)
+    spunt_obcerstveni = fields.Integer(required=True)

@@ -4,7 +4,7 @@ from datetime import datetime
 class GetDailyTotalIncomeHandler:
     def __init__(self, source_data, income_data):
         self.income_data = income_data
-        self.processing_date = datetime.strptime(source_data.processing_date, "%Y-%m-%d").date()
+        self.processing_date = datetime.strptime(str(source_data.processing_date), "%Y-%m-%d").date()
         self.calendar_detail_df = source_data.calendar_detail_df
         self.raw_temperature_df = source_data.raw_temperature_df
 
@@ -29,11 +29,12 @@ class GetDailyTotalIncomeHandler:
     def sum_the_daily_income(self):
         calendar_detail_filter_df = self.calendar_detail_df.loc[
             self.calendar_detail_df['action_date'] == self.processing_date]
+        daily_income = {key: value for key, value in self.income_data.items() if key != 'action_date'}
 
         if calendar_detail_filter_df.empty:
             daily_income_int = 999
         else:
-            daily_income_int = sum(self.income_data['daily_income'].values())
+            daily_income_int = sum(daily_income.values())
 
         return daily_income_int, int(calendar_detail_filter_df['pk_day_temperature_id'].iloc[0])
 
