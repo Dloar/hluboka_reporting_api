@@ -34,3 +34,8 @@ If you are making larger changes, please create a Discussion first and let's tal
 All the finished projects that we cover in the course are in the `projects` folder. Making changes to these projects is done very carefully, especially after recording.
 
 Please start a Discussion before making any changes, as doing so can make the experience for students confusing (if the videos and e-book are different).
+
+## nslookup will give details about serves
+```
+nslookup reporting-good-hluboka.cws71yli5wvp.eu-central-1.rds.amazonaws.com
+```

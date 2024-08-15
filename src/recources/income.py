@@ -13,9 +13,9 @@ blp = Blueprint("income", __name__, description="Uploading the daily income.")
 class Income(MethodView):
 
     @blp.response(200)
-    def get(self, income_data):
+    def get(self):
         try:
-            return {"daily_income": income_data}, 201
+            return {"daily_income": 'Income pipeline alive'}, 201
         except KeyError:
             abort(404, message="Get Income command failed.")
     @blp.arguments(IncomeSchema)

@@ -2,10 +2,12 @@ import datetime
 import logging
 
 import numpy as np
-import pandas as pd
 
 
 class DefineTemperatureDictionaryHandler:
+
+    def __str__(self):
+        "Getting weather json input and taking each value and create final structure."
     def __init__(self, temperature_data):
         self.temperature_data = temperature_data
 
@@ -22,7 +24,11 @@ class DefineTemperatureDictionaryHandler:
         return data
 
     def current_action_date(self):
-        "get current datetime for to ingest"
+        """
+        Get current datetime for to ingest.
+        If this Value is corupted, the model takes the current datetime.
+        :return:
+        """
         try:
             if 'action_date' in list(self.temperature_data.keys()):
                 action_datetime = self.temperature_data['action_datetime']

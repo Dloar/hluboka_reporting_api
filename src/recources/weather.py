@@ -13,7 +13,7 @@ class Weather(MethodView):
     @blp.response(200)
     def get(self):
         try:
-            return {"temperature_data": 1}, 201
+            return {"temperature_data": 'Weather pipeline alive'}, 201
         except KeyError:
             abort(404, message="Get Weather command failed.")
 

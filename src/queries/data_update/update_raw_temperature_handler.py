@@ -8,6 +8,10 @@ from src.services.create_db_connection import DbConnectorModel
 
 class UpdateRawTemperatureHandler:
     def __init__(self, weather_data_dict):
+        """
+        Store the weather structure into dataframe
+        :param weather_data_dict:
+        """
         self.weather_data_df = pd.DataFrame(data=weather_data_dict, index=[0])
 
     def update_raw_temperature_data(self):
