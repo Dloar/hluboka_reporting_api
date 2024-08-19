@@ -1,4 +1,9 @@
-import uuid
+"""
+Reporting Back End for Areal Hluboka reporting System
+Build 01/08/2024
+contact: xkrao11@gmail.com
+comment: Function that drives the income data process
+"""
 
 from src.handlers.define_income_dictionary_handler import DefineIncomeDictionaryHandler
 from src.handlers.get_api_weather_report_handler import GetApiWeatherReportHandler
@@ -10,7 +15,7 @@ from src.queries.data_update.update_results_to_db_handler import UpdateResultsTo
 
 
 def process_income_data(income_data,
-                        calculation_id=str(uuid.uuid4())
+                        calculation_id
                         ):
     """
 
@@ -18,17 +23,20 @@ def process_income_data(income_data,
     :param calculation_id: ID that will represent this calculation in the status table
     :return:
     """
+    try:
+        # Upload status that calculation has been initiated
+        UpdateReceivedDataStatusHandler(income_data=income_data, status=1, calculation_id=calculation_id)
+        source_data = GetIncomeDataHandler(income_data=income_data)
+        structured_income_df = DefineIncomeDictionaryHandler(income_data=income_data,
+                                                             source_data=source_data).current_income_final()
 
-    # Upload status that calculation has been initiated
-    UpdateReceivedDataStatusHandler(income_data=income_data, status=0, calculation_id=calculation_id)
-    source_data = GetIncomeDataHandler(income_data=income_data)
-    structured_income_df = DefineIncomeDictionaryHandler(income_data=income_data,
-                                                         source_data=source_data).current_income_final()
+        # Update the income by attraction
+        UpdateIncomeDetailHandler(structured_income_df)
+        source_data_total = GetDailyTotalIncomeHandler(source_data=source_data, income_data=income_data)
+        api_weather_df = GetApiWeatherReportHandler(processing_date=source_data_total.processing_date)
 
-    # Update the income by attraction
-    UpdateIncomeDetailHandler(structured_income_df)
-    source_data = GetDailyTotalIncomeHandler(source_data=source_data, income_data=income_data)
-    api_weather_df = GetApiWeatherReportHandler(processing_date=source_data.processing_date)
+        UpdateResultsToDb(source_data=source_data, api_weather_df=api_weather_df)
+        UpdateReceivedDataStatusHandler(income_data=income_data, status=2, calculation_id=calculation_id)
 
-    UpdateResultsToDb(source_data=source_data, api_weather_df=api_weather_df)
-    UpdateReceivedDataStatusHandler(income_data=income_data, status=1, calculation_id=calculation_id)
+    except Exception:
+        UpdateReceivedDataStatusHandler(income_data=income_data, status=0, calculation_id=calculation_id)

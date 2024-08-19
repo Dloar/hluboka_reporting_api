@@ -24,7 +24,7 @@ class UpdateResultsToDb:
         temperature = int(selected_forecast_df['temperature'].iloc[0])
         humidity = int(selected_forecast_df['humidity'].iloc[0])
         wind_speed = int(selected_forecast_df['windSpeed'].iloc[0])
-        rain_intensity = 0 # int(selected_forecast_df['rain_intensity'].iloc[0])
+        rain_intensity = int(selected_forecast_df['rain_intensity'].iloc[0])
         rain_accumulation = int(selected_forecast_df['rainAccumulation'].iloc[0])
         time_of_sun = int(selected_forecast_df['time_of_sun'].iloc[0])
 

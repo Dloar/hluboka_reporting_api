@@ -1,14 +1,28 @@
+"""
+Reporting Back End for Areal Hluboka reporting System
+Build 01/08/2024
+contact: xkrao11@gmail.com
+"""
+import os
+
 from flask import Flask
 from flask_smorest import Api
 from flask_migrate import Migrate
+from dotenv import load_dotenv
 
 from db import db
 
 from src.recources.income import blp as IncomeBlueprint
 from src.recources.weather import blp as WeatherBlueprint
 
+
 def create_app():
+    """
+    Driver function for the Flask App
+    :return:
+    """
     app = Flask(__name__)
+    load_dotenv()
 
     # Config Options
     app.config["PROPAGATE_EXCEPTIONS"] = True
@@ -21,7 +35,7 @@ def create_app():
     app.config[
         "OPENAPI_SWAGGER_UI_URL"
     ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db" #db_url or os.getenv("DATABASE_URL", "sqlite:///data.db")
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"  # os.getenv("DATABASE_URL", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
     app.config['PROPAGATE_EXCEPTION'] = True
 
@@ -34,7 +48,6 @@ def create_app():
 
     return app
 
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True, host='0.0.0.0', port=8000)
+# if __name__ == '__main__':
+#     app = create_app()
+#     app.run(debug=True, host='0.0.0.0', port=8000)

@@ -1,3 +1,10 @@
+"""
+Reporting Back End for Areal Hluboka reporting System
+Build 01/08/2024
+contact: xkrao11@gmail.com
+comment: Source all necessary records from db into execution.
+"""
+
 from src.queries.handlers.get_attraction_daily_data_handler import GetAttractionDailyDataHandler
 from src.queries.handlers.get_attraction_data_handler import GetAttractionDataHandler
 from src.queries.handlers.get_weather_day_detail_data_handler import GetWeatherDayDetailDataHandler
