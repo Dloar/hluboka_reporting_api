@@ -4,6 +4,7 @@ Build 01/08/2024
 contact: xkrao11@gmail.com
 comment: Function that drives the income data process
 """
+import logging
 
 from src.handlers.define_income_dictionary_handler import DefineIncomeDictionaryHandler
 from src.handlers.get_api_weather_report_handler import GetApiWeatherReportHandler
@@ -38,5 +39,7 @@ def process_income_data(income_data,
         UpdateResultsToDb(source_data=source_data, api_weather_df=api_weather_df)
         UpdateReceivedDataStatusHandler(income_data=income_data, status=2, calculation_id=calculation_id)
 
-    except Exception:
+    except Exception as e:
+        logging.info('Status failed')
         UpdateReceivedDataStatusHandler(income_data=income_data, status=0, calculation_id=calculation_id)
+        raise e
