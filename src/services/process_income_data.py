@@ -33,8 +33,7 @@ def process_income_data(income_data,
 
         # Update the income by attraction
         UpdateIncomeDetailHandler(structured_income_df)
-        source_data_total = GetDailyTotalIncomeHandler(source_data=source_data, income_data=income_data,
-                                                       structured_income_df=structured_income_df)
+        source_data_total = GetDailyTotalIncomeHandler(source_data=source_data, income_data=income_data)
         api_weather_df = GetApiWeatherReportHandler(processing_date=source_data_total.processing_date)
 
         UpdateResultsToDb(source_data=source_data, api_weather_df=api_weather_df)

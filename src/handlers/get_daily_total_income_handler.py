@@ -14,7 +14,7 @@ class GetDailyTotalIncomeHandler:
             "fk_day_temperature_id": use_id,
             "action_date": source_data.processing_date,
             "total_income": daily_income_int,
-            "total_employees": structured_income_df.total_employees_number
+            "total_employees": income_data['total_employees']
         }
 
         self.day_temperature = {
