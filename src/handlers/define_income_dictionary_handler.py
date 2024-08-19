@@ -40,7 +40,8 @@ class DefineIncomeDictionaryHandler:
         # temp = self.calendar_detail_df.loc[
         #     self.calendar_detail_df['action_date'] == self.income_data['action_date']]['pk_day_temperature_id']
         # print(temp)
-        current_income_df['fk_day_temperature_id'] = 2
+        current_income_df['fk_day_temperature_id'] = int(self.calendar_detail_df.loc[
+            self.calendar_detail_df['action_date'] == self.income_data['action_date']]['pk_day_temperature_id'])
 
         return current_income_df
 
