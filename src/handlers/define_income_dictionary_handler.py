@@ -45,7 +45,7 @@ class DefineIncomeDictionaryHandler:
         return current_income_df
 
     def get_total_employees(self):
-        if self.income_data[''].isna():
+        if self.income_data['total_employees'].isna():
             total_employees = None
         else:
             total_employees = self.income_data['total_employees']

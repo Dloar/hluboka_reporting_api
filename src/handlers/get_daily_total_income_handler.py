@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 class GetDailyTotalIncomeHandler:
-    def __init__(self, source_data, income_data):
+    def __init__(self, source_data, income_data, structured_income_df):
         self.income_data = income_data
         self.processing_date = datetime.strptime(str(source_data.processing_date), "%Y-%m-%d").date()
         self.calendar_detail_df = source_data.calendar_detail_df
@@ -14,7 +14,7 @@ class GetDailyTotalIncomeHandler:
             "fk_day_temperature_id": use_id,
             "action_date": source_data.processing_date,
             "total_income": daily_income_int,
-            "total_employees": source_data.total_employees_number
+            "total_employees": structured_income_df.total_employees_number
         }
 
         self.day_temperature = {
