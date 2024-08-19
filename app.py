@@ -3,7 +3,9 @@ Reporting Back End for Areal Hluboka reporting System
 Build 01/08/2024
 contact: xkrao11@gmail.com
 """
+import logging
 import os
+import warnings
 
 from flask import Flask
 from flask_smorest import Api
@@ -15,6 +17,11 @@ from db import db
 from src.recources.income import blp as IncomeBlueprint
 from src.recources.weather import blp as WeatherBlueprint
 
+
+# set up parameters
+FORMAT = '%(asctime)s: %(message)s'
+logging.basicConfig(format=FORMAT, level=logging.DEBUG)
+warnings.filterwarnings("ignore")
 
 def create_app():
     """
