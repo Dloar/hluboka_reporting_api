@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 
 
@@ -28,16 +29,20 @@ class GetDailyTotalIncomeHandler:
         }
 
     def sum_the_daily_income(self):
-        calendar_detail_filter_df = self.calendar_detail_df.loc[
-            self.calendar_detail_df['action_date'] == self.processing_date]
-        daily_income = {key: value for key, value in self.income_data.items() if key != 'action_date'}
+            try:
+                calendar_detail_filter_df = self.calendar_detail_df.loc[
+                    self.calendar_detail_df['action_date'] == self.processing_date]
+                daily_income = {key: value for key, value in self.income_data.items() if key != 'action_date'}
 
-        if calendar_detail_filter_df.empty:
-            daily_income_int = 999
-        else:
-            daily_income_int = sum(daily_income.values())
+                if calendar_detail_filter_df.empty:
+                    daily_income_int = 999
+                else:
+                    daily_income_int = sum(daily_income.values())
 
-        return daily_income_int, int(calendar_detail_filter_df['pk_day_temperature_id'].iloc[0])
+                return daily_income_int, int(calendar_detail_filter_df['pk_day_temperature_id'].iloc[0])
+            except IndexError as e:
+                logging.info('This day is not define in the weather baseline.')
+                raise e
 
     def get_daily_temperature(self):
         temperature_filter_df = self.raw_temperature_df.loc[

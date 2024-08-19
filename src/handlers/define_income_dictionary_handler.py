@@ -10,15 +10,15 @@ class DefineIncomeDictionaryHandler:
         self.income_data = income_data
         # self.total_employees_number = self.get_total_employees()
         self.calendar_detail_df = source_data.calendar_detail_df
+        self.attraction_data_all_df = source_data.attraction_data_df
         self.income_dict = self.current_income_data()
-        self.attraction_data_df = source_data.attraction_data_df
 
     def current_income_data(self):
         results_dict = {}
         try:
-            for attraction_name in list(self.attraction_data_df['attraction_name']):
+            for attraction_name in list(self.attraction_data_all_df['attraction_name']):
                 attraction_key = int(
-                    self.attraction_data_df.loc[self.attraction_data_df['attraction_name'] == attraction_name][
+                    self.attraction_data_all_df.loc[self.attraction_data_all_df['attraction_name'] == attraction_name][
                         'pk_attraction_dictionary_id'])
                 if attraction_name in list(self.income_data.keys()):
                     results_dict[attraction_key] = self.income_data[attraction_name]
