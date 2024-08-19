@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 class GetDailyTotalIncomeHandler:
-    def __init__(self, source_data, income_data, structured_income_df):
+    def __init__(self, source_data, income_data):
         self.income_data = income_data
         self.processing_date = datetime.strptime(str(source_data.processing_date), "%Y-%m-%d").date()
         self.calendar_detail_df = source_data.calendar_detail_df
