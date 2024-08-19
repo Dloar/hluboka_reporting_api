@@ -8,7 +8,7 @@ import pandas as pd
 class DefineIncomeDictionaryHandler:
     def __init__(self, income_data, source_data):
         self.income_data = income_data
-        self.total_employees_number = self.get_total_employees()
+        # self.total_employees_number = self.get_total_employees()
         self.calendar_detail_df = source_data.calendar_detail_df
         self.income_dict = self.current_income_data()
         self.attraction_data_df = source_data.attraction_data_df
@@ -44,13 +44,13 @@ class DefineIncomeDictionaryHandler:
 
         return current_income_df
 
-    def get_total_employees(self):
-        if self.income_data['total_employees'].isnull():
-            total_employees = None
-        else:
-            total_employees = self.income_data['total_employees']
-
-        return total_employees
+    # def get_total_employees(self):
+    #     if self.income_data['total_employees'].isnull():
+    #         total_employees = None
+    #     else:
+    #         total_employees = self.income_data['total_employees']
+    #
+    #     return total_employees
 
 
 
