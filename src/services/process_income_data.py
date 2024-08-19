@@ -25,6 +25,7 @@ def process_income_data(income_data,
     :return:
     """
     try:
+        logging.info('Income process initiated.')
         # Upload status that calculation has been initiated
         UpdateReceivedDataStatusHandler(income_data=income_data, status=1, calculation_id=calculation_id)
         source_data = GetIncomeDataHandler(income_data=income_data)
@@ -43,3 +44,5 @@ def process_income_data(income_data,
         logging.info('Status failed')
         UpdateReceivedDataStatusHandler(income_data=income_data, status=0, calculation_id=calculation_id)
         raise e
+    finally:
+        logging.info('Income process finalized.')
