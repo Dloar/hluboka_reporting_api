@@ -42,7 +42,7 @@ def create_app():
     app.config[
         "OPENAPI_SWAGGER_UI_URL"
     ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"  # os.getenv("DATABASE_URL", "sqlite:///data.db")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
     app.config['PROPAGATE_EXCEPTION'] = True
 
@@ -55,6 +55,6 @@ def create_app():
 
     return app
 
-# if __name__ == '__main__':
-#     app = create_app()
-#     app.run(debug=True, host='0.0.0.0', port=8000)
+if __name__ == '__main__':
+    app = create_app()
+    app.run(debug=True, host='0.0.0.0', port=8000)

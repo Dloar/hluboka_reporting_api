@@ -10,3 +10,4 @@ class DailyIncomeTotal(db.Model):
                                       nullable=True)
     total_income = db.Column(db.Integer, primary_key=True)
     action_date = db.Column(db.Date, primary_key=True)
+    total_employees = db.Column(db.Integer, primary_key=True)
